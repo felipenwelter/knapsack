@@ -1,14 +1,9 @@
 import random
 import numpy as np
 from cromossomo import Cromossomo
+import config
 
 print("Problema da Mochila usando Algoritmo Genético")
-
-available_itens_weight = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
-available_itens_value  = [3, 2, 1, 9,  4,  3,  5,  3,  1,  2]
-
-population = []
-knapsackCapacity = 30
 
 class Population:
 
@@ -30,7 +25,7 @@ class Population:
     def evaluate(self):
         self.avg = 0
         for c in self.cromossomos:
-            c.evaluate_fitness(knapsackCapacity)
+            c.evaluate_fitness(config.knapsackCapacity)
             self.avg += c.weight
         self.avg = self.avg/self.size
 

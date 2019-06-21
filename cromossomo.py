@@ -1,7 +1,5 @@
 import random
-
-available_itens_weight = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
-available_itens_value  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+import config
 
 class Cromossomo:
 
@@ -24,8 +22,8 @@ class Cromossomo:
         self.weight = 0
         for i in range(self.compositionSize-1):
             if (self.composition[i] == 1):
-                self.value += available_itens_value[i]
-                self.weight += available_itens_weight[i]
+                self.value += config.available_itens_value[i]
+                self.weight += config.available_itens_weight[i]
 
     def evaluate_fitness(self, expected_weight):
 
