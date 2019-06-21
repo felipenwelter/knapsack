@@ -1,5 +1,6 @@
 import random
 from cromossomo import Cromossomo
+from population import Population
 
 print("Problema da Mochila usando Algoritmo Genético")
 
@@ -9,13 +10,13 @@ available_itens_value  = [3, 2, 1, 9,  4,  3,  5,  3,  1,  2]
 population = []
 knapsackCapacity = 30
 
-#População inicial:
-# uma população composta de n indivíduos (cromossomos), gerada aleatoriamente para iniciar
-# o processo de busca por soluções para o problema em questão
+population = Population()
+population.initialize()
+population.evaluate()
 
-for i in range(10):
-    cromossomo = Cromossomo()
-    cromossomo.initialize()
-    population.append(cromossomo)
+population.print()
+
+
+
 
 print("fim")
