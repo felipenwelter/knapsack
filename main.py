@@ -16,7 +16,10 @@ population.evaluate()
 
 population.print()
 
+newPop = Population()
+newPop.procreate(population)
+newPop.evaluate()
 
-
+newPop.print()
 
 print("fim")
