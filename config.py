@@ -14,10 +14,10 @@ knapsackCapacity = 30
 population_size = 15
 
 #número de gerações (rodadas)
-generations = 50
+generations = 24
 
-#define o método para mutação de genes: "random" ou "fix"
+#define o método para mutação de genes: "random", "fix" ou "none"
 mutateMethod = "random" 
 
-#define o método de procriação (geração de nova população)
+#define o método de procriação (geração de nova população): "first_elite", "all_elite" ou "random"
 procreateMethod = "first_elite"

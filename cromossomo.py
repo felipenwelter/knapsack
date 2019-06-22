@@ -45,7 +45,8 @@ class Cromossomo:
     def mutate(self):
         '''Método que realiza a mutação de um cromossomo, que pode ser feito de duas formas:
         - fix: define um grupo fixo de genes que sofrem mutação
-        - random: define aleatoriamente quais genes sofrem mutação'''
+        - random: define aleatoriamente quais genes sofrem mutação
+        - none: não realiza nenhuma mutação'''
         if (self.mutateMethod == "fix"):
             self.fix_mutate()
         elif (self.mutateMethod == "random"):

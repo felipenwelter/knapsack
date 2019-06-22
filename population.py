@@ -1,4 +1,5 @@
 import random
+import time
 import numpy as np
 import operator
 import config
@@ -43,7 +44,7 @@ class Population:
         sortedList = sortPopulation(self.cromossomos)
         for c in sortedList:
             print(f"composition {c.composition} weight {c.weight} | value {c.value} | %limit Weight {c.usedWeightPercent} | fitness {c.fitness}")
-        #print(f" population weight average is {self.weightAverage} kg")
+        print(f" population weight average is {self.weightAverage} kg")
 
     def procreate(self,ancestral):
         '''Geração de uma nova população a partir de uma população ancestral. Permite três formas diferentes:
@@ -57,6 +58,7 @@ class Population:
                 #não replica nenhum item da população ancestral para a nova população
                 p1, p2 = self.selectParents(ancestral.cromossomos)
                 new_cromossomo = self.crossover(p1,p2)
+                new_cromossomo.mutate()
                 self.cromossomos.append(new_cromossomo)
 
         elif (self.procreateMethod == "all_elite"):
@@ -99,8 +101,8 @@ class Population:
         limit = len(cromossomoList)
         r = random.randint(0,limit-1)
         p1 = cromossomoList[r]
-        r = random.randint(0,limit-1)
-        p2 = cromossomoList[r]
+        s = random.randint(0,limit-1)
+        p2 = cromossomoList[s]
         return p1, p2
 
     def crossover(self,p1,p2):

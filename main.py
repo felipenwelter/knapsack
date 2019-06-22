@@ -2,6 +2,7 @@ import random
 import config
 from cromossomo import Cromossomo
 from population import Population
+import plot
 
 print("Knapsack Problem usando Algoritmo Genético")
 print("Felipe Nathan Welter e Vitor Emanuel Batista")
@@ -32,3 +33,7 @@ for i in range(config.generations-1):
     newPop.print()
 
     chronology.append(newPop)
+
+#imprime o gráfico para até 50 populações
+if len(chronology) <= 50:
+    plot.plot(chronology)

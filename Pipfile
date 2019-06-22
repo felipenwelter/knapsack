@@ -8,6 +8,7 @@ pylint = "*"
 
 [packages]
 deap = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7"
