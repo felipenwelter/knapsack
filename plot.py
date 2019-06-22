@@ -54,7 +54,7 @@ def plot(chronology):
 		plt.axis([0, x_limit, 0, y_limit])
 
 		#define titulo do grafico (número da população)
-		plt.title(index-1)
+		plt.title(index-1,fontsize=8)
 
 		#imprime todos os valores de x e y
 		plt.plot(x, y, 'r.')
@@ -66,6 +66,13 @@ def plot(chronology):
 				plt.plot(c.weight, c.value,'b.')
 
 		index += 1
+
+	fig = plt.gcf()
+	fig.canvas.set_window_title('Knacksack Problem - UDESC 2019')
+	fig.suptitle(f"Knapsack Problem\n procreate: {config.procreateMethod} | mutate: {config.mutateMethod} | population: {config.generations} | individuals: {config.population_size}", fontsize=9)
+
+	plt.rc('xtick', labelsize=10)
+	plt.rc('ytick', labelsize=10)
 
 	#apresenta o graficos
 	plt.show()
