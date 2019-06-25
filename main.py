@@ -4,36 +4,40 @@ from cromossomo import Cromossomo
 from population import Population
 import plot
 
-print("Knapsack Problem usando Algoritmo Genético")
-print("Felipe Nathan Welter e Vitor Emanuel Batista")
-print("UDESC 2019 - Disciplina PAA")
+def geneticAlgorithm():
 
-#armazena o histórico de gerações
-chronology = []
+    print("Knapsack Problem usando Algoritmo Genético")
+    print("Felipe Nathan Welter e Vitor Emanuel Batista")
+    print("UDESC 2019 - Disciplina PAA")
 
-#inicializa uma população aleatoriamente
-population = Population()
-population.initialize()
-population.evaluate()
+    #armazena o histórico de gerações
+    chronology = []
 
-print(f"Initial Population")
-population.print()
+    #inicializa uma população aleatoriamente
+    population = Population()
+    population.initialize()
+    population.evaluate()
 
-chronology.append(population)
+    print(f"Initial Population")
+    population.print()
 
-#executa as rodadas de sucessias gerações
-for i in range(config.generations-1):
+    chronology.append(population)
 
-    #gera uma nova população baseada no antecessor
-    newPop = Population()
-    newPop.procreate( chronology[-1] )
-    newPop.evaluate()
+    #executa as rodadas de sucessias gerações
+    for i in range(config.generations-1):
 
-    print(f"Population {i+1}")
-    newPop.print()
+        #gera uma nova população baseada no antecessor
+        newPop = Population()
+        newPop.procreate( chronology[-1] )
+        newPop.evaluate()
 
-    chronology.append(newPop)
+        print(f"Population {i+1}")
+        newPop.print()
 
-#imprime o gráfico para até 50 populações
-if len(chronology) <= 50:
-    plot.plot(chronology)
+        chronology.append(newPop)
+
+    #imprime o gráfico para até 50 populações
+    if len(chronology) <= 50:
+        plot.plot(chronology)
+
+    return chronology[-1].cromossomos[0]
