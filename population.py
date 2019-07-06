@@ -6,7 +6,7 @@ import config
 from cromossomo import Cromossomo
 
 
-def sortPopulation(newList):
+def sortPopulation(newList: list):
     '''ordena primeiro os valores fitness = true, depois value, depois weight, por exemplo:
     true/19/29 - true/19/28 - true/18/30 - true 18/25 - true/18/25 - false/26/50'''
     sortedList = sorted(
@@ -54,7 +54,7 @@ class Population:
                 f"composition {c.composition} weight {c.weight} | value {c.value} | %limit Weight {c.usedWeightPercent} | fitness {c.fitness}")
         print(f" population weight average is {self.weightAverage} kg")
 
-    def procreate(self, ancestral):
+    def procreate(self, ancestral: object):
         '''Geração de uma nova população a partir de uma população ancestral. Permite três formas diferentes:
         - random: a seleção dos progenitores é feita de forma aleatória
         - all_elite: todos os elementos que atendem ao critério fitness são copiados para a próxima geração
@@ -107,7 +107,7 @@ class Population:
                 new_cromossomo.mutate()  # mutação do novo cromossomo
                 self.cromossomos.append(new_cromossomo)
 
-    def selectParents(self, cromossomoList):
+    def selectParents(self, cromossomoList: list) -> tuple: 
         '''Seleciona os pais para realizar o cruzamento. Busca os pais a partir de uma lista
         restrita de cromossomos de uma população anterior enviada como parâmetro.'''
         limit = len(cromossomoList)
@@ -117,7 +117,7 @@ class Population:
         p2 = cromossomoList[s]
         return p1, p2
 
-    def crossover(self, p1, p2):
+    def crossover(self, p1: object, p2: object) -> object:
         '''Faz cruzamento (crossover) unindo a primeira metade de genes do primeiro progenitor
         com a segunda meteade de genes do segundo progenitor'''
         half = int(p1.compositionSize/2)
