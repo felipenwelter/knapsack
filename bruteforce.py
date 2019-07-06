@@ -1,14 +1,15 @@
 import config
 from cromossomo import Cromossomo
 
+
 def bruteForce():
-    
-    limit = pow(2,config.composition_size) - 1
+
+    limit = pow(2, config.composition_size) - 1
     best = Cromossomo()
 
     for i in range(limit):
 
-        new_composition = list( bin(i)[2:].zfill( config.composition_size ))
+        new_composition = list(bin(i)[2:].zfill(config.composition_size))
         new_composition = map(lambda x: int(x), new_composition)
         new_composition = list(new_composition)
 
