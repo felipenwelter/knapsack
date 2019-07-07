@@ -1,5 +1,6 @@
 import random
 import config
+import json
 
 
 class Cromossomo:
@@ -17,6 +18,17 @@ class Cromossomo:
         self.usedWeightPercent = 0
         self.mutateMethod = config.mutateMethod  # método de mutação de genes
 
+        # dados dos itens a serem avaliados para a mochila
+        self.file = config.dataset
+        # valor dos itens da mochila (respectivo ao peso)
+        self.available_itens_value = []
+        # peso dos itens da mochila (respectivo ao valor)
+        self.available_itens_weight = []
+        # capacidade máxima de peso para a mochila, em kg
+        self.knapsackCapacity = 0
+        # realiza a leitura do arquivo de dataset
+        self.readJson()
+
     def initialize(self):
         '''Define 0s e 1s aleatórios para compor o cromossomo'''
         for i in range(self.compositionSize):
@@ -30,19 +42,19 @@ class Cromossomo:
         for i in range(self.compositionSize):
             # cada gene ativo '1' indica que peso e valor desse gene são somados no cromossomo
             if (self.composition[i] == 1):
-                self.value += config.available_itens_value[i]
-                self.weight += config.available_itens_weight[i]
+                self.value += self.available_itens_value[i]
+                self.weight += self.available_itens_weight[i]
 
         # calcula o percentual do peso que o cromossomo está usando em relação ao limite (carater informativo)
         # e se ultrapassar a capacidade da mochila, zera seu valor
         self.usedWeightPercent = (self.weight * 100) / \
-            (config.knapsackCapacity)
+            (self.knapsackCapacity)
         if (self.usedWeightPercent > 100):
             self.usedWeightPercent = 0
         self.usedWeightPercent = int(self.usedWeightPercent)
 
         # avalia se o cromossomo atende as expectativas de fitness (se não ultrapassa capacidade da mochila)
-        if (self.weight <= config.knapsackCapacity):
+        if (self.weight <= self.knapsackCapacity):
             self.fitness = True
         else:
             self.fitness = False
@@ -76,3 +88,10 @@ class Cromossomo:
     def locus_change(self, m):
         '''Faz a mutação de um gene em específico para um valor aleatório'''
         self.composition[m] = random.randint(0, 1)
+
+    def readJson(self):
+        with open(f'datasets/{self.file}.json') as json_file:
+            data = json.load(json_file)
+        self.knapsackCapacity = data["capacity"]
+        self.available_itens_value = data["values"]
+        self.available_itens_weight = data["weights"]
