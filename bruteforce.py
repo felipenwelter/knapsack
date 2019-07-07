@@ -2,10 +2,12 @@ import config
 import json
 from cromossomo import Cromossomo
 
-def composition_size() -> int: 
+
+def composition_size() -> int:
     with open(f'datasets/{config.dataset}.json') as json_file:
         data = json.load(json_file)
     return len(data["values"])
+
 
 def bruteForce():
     compositionSize = composition_size()
