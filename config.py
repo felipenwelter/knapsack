@@ -1,8 +1,4 @@
-#define o tamanho de cada gene cromossomo (indivíduo)
-#que também representa o número de elementos disponíveis para adicionar na mochila
-composition_size = 10
-
-dataset = "example1"
+dataset = "example2"
 
 #número de cromossomos (indivíduos) que deve existir em cada população gerada
 population_size = 15

@@ -90,4 +90,4 @@ def plot(chronology):
     plt.rc('ytick', labelsize=10)
 
     # apresenta o graficos
-    plt.show()
+    #plt.show()
