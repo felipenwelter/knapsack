@@ -1,15 +1,20 @@
 import config
+import json
 from cromossomo import Cromossomo
 
+def composition_size() -> int: 
+    with open(f'datasets/{config.dataset}.json') as json_file:
+        data = json.load(json_file)
+    return len(data["values"])
 
 def bruteForce():
-
-    limit = pow(2, config.composition_size) - 1
+    compositionSize = composition_size()
+    limit = pow(2, compositionSize) - 1
     best = Cromossomo()
 
     for i in range(limit):
 
-        new_composition = list(bin(i)[2:].zfill(config.composition_size))
+        new_composition = list(bin(i)[2:].zfill(compositionSize))
         new_composition = map(lambda x: int(x), new_composition)
         new_composition = list(new_composition)
 

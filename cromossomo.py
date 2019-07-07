@@ -9,9 +9,9 @@ class Cromossomo:
     def __init__(self):
         self.weight = 0  # peso do cromossomo (pela soma dos genes)
         self.value = 0  # valor do cromossomo (pela soma dos genes)
-        self.compositionSize = config.composition_size  # número de genes do cromossomo
+        self.compositionSize = 0 #config.composition_size  # número de genes do cromossomo
         # inicializa todos os genes com 0
-        self.composition = [0 for i in range(self.compositionSize)]
+        self.composition = [] # [0 for i in range(self.compositionSize)]
         # atributo que define se cromosso atende critério de aceitação (fitness)
         self.fitness = False
         # atributo informativo para saber o percentual de ocupação em relação ao limite de peso
@@ -95,3 +95,5 @@ class Cromossomo:
         self.knapsackCapacity = data["capacity"]
         self.available_itens_value = data["values"]
         self.available_itens_weight = data["weights"]
+        self.compositionSize = len(data["values"])
+        self.composition = [0 for i in range(self.compositionSize)]
