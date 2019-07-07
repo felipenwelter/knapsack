@@ -2,7 +2,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import random
+import json
 import config
 from population import sortPopulation
 
@@ -31,9 +31,14 @@ def shouldPrint(cromossomo, population):
 
 def plot(chronology):
 
+    with open(f'datasets/{config.dataset}.json') as json_file:
+        data = json.load(json_file)
+    knapsackCapacity = data["capacity"]
+    available_itens_weight = data["weights"]
+
     # define limites x e y do grafico
-    x_limit = (np.sum(config.available_itens_weight) + 10)
-    y_limit = config.knapsackCapacity + 5
+    x_limit = (np.sum(available_itens_weight) + 10)
+    y_limit = knapsackCapacity + 5
 
     index = 1
 
@@ -56,7 +61,7 @@ def plot(chronology):
                     subplot_config[len(chronology)][1], index)
 
         # imprime linha fixa do limite da mochila
-        plt.plot(np.full(y_limit+3, config.knapsackCapacity),
+        plt.plot(np.full(y_limit+3, knapsackCapacity),
                  np.arange(y_limit+3))
 
         # configura limites do grafico
