@@ -38,8 +38,8 @@ def geneticAlgorithm():
         chronology.append(newPop)
 
     # imprime o gráfico para até 50 populações
-    if len(chronology) <= 50:
-        plot.plot(chronology)
+    #if len(chronology) <= 50:
+        # plot.plot(chronology)
 
     best = chronology[-1].cromossomos[0]
 
@@ -50,4 +50,3 @@ def geneticAlgorithm():
     print(f"weight: {best.weight}")
 
     return best
-geneticAlgorithm()
