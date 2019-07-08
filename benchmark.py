@@ -1,5 +1,5 @@
-from bruteforce import bruteForce
-from main import geneticAlgorithm
+from bruteForce import bruteForce
+from geneticAlgorithm import geneticAlgorithm
 import time as t
 
 start = t.time()
@@ -11,6 +11,6 @@ resp2 = geneticAlgorithm()
 time2 = t.time() - start
 
 print(
-    f" brute force spent {time1} sec to find {resp1.weight} kg to {resp1.value} of value")
+    f" \nbrute force spent {time1} sec to find {resp1.weight} kg to {resp1.value} of value")
 print(
     f" genetic algorithm spent {time2} sec to find {resp2.weight} kg to {resp2.value} of value")
