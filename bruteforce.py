@@ -16,6 +16,8 @@ def bruteForce():
 
     for i in range(limit):
 
+        print(f"Brute Force limit {i}", end='\r')
+
         new_composition = list(bin(i)[2:].zfill(compositionSize))
         new_composition = map(lambda x: int(x), new_composition)
         new_composition = list(new_composition)
@@ -30,7 +32,7 @@ def bruteForce():
             elif (c.value == best.value) and (c.weight <= best.weight):
                 best = c
 
-    print("Knapsack Problem - Brute Force")
+    print("\nKnapsack Problem - Brute Force")
     print("A melhor resposta encontrada foi:")
     print(f"composition: {best.composition}")
     print(f"value: {best.value}")
